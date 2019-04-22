@@ -35,7 +35,8 @@ dataset = load_digits(n_class = 10)
   - 오자키: 하나로 묶지 않으면 파라메터가 이랬다 저랬다 하니 묶는게 좋은데 nn.Modulelist()는 for문으로 돌려야 하니까 기분 나쁨
   
 - 호리구치: 학습할 때 require_grad를 False로 해 놓지 않으면 embedding layer까지 학습해버리니까?
-  - 와다상: pre_trained를 사용할 때는 또 다르지만
+  - 와다상: pre_trained를 사용할 때에만 embedding을 고정할 필요가 있으니 그 때에만 require_grad를 False로 적는 등의 고정하는 코드를 적어줘야 하지만 다른 상황에는 그럴 
+  필요가 없음
   
 - attention할 때에는 lstm의 output(hs)를 사용
   - bi-lstm의 hs에는 모든 스텝 포함되어있고 h_n(hidden_state), c_n(cell_state)은 최종 레이어 정보가 들어가 있음
@@ -46,3 +47,6 @@ dataset = load_digits(n_class = 10)
   
 - lstm할 때에는 pack, pad만 하는데 attention할 때에는 masking하는 등의 작업이 필요
   - 가장 문장 길이가 긴 순서대로 batch를 만들지 않으면 계산할 때 よろしくない
+  
+- lstm할 때 dropout을 정해줄 수 있는데 레이어가 하나면 쓸모가 없고 레이어가 여러개면 그 전 레이어에서 다음 레이어로 갈 때에만 영향을 주는건데 이럴 때만 dropout해야지 순방향 역방향일 때에도
+ dropout해 버리면 dropout한 것의 dropout한 상태가 되어버리니까 わけわかんなくなっちゃう
