@@ -28,8 +28,9 @@ dataset = load_digits(n_class = 10)
 - ```nn.Sequential()```은 자동으로 레이어 수를 정할 수 있다고?
   - 아 for문으로 range를 돌렸네
   - 원라이너로 가능
+  - 안에 있는 레이어를 따로 따로 부르는 것은 불가능
   
-- ```nn.Modulelist()```는 인덱스로 레이어를 하나 하나 불러올 수 있음
+- ```nn.Modulelist()```는 인덱스로 레이어를 하나 하나 불러올 수 있음: 나중을 생각하면 이게 좋음
   - 그러니까 이건 ```for i in range(len(self.layers))```로 하면 됨
   - 오자키: 하나로 묶지 않으면 파라메터가 이랬다 저랬다 하니 묶는게 좋은데 nn.Modulelist()는 for문으로 돌려야 하니까 기분 나쁨
   
